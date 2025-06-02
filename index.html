@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MirDev | Веб-сайты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #003973, #e5e5be);
+      color: white;
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+    header img.logo {
+      width: 80px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 38px;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    header p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    .profile-photo {
+      margin-top: 30px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      animation: popUp 1s ease-in-out forwards;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-in-out;
+    }
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      text-align: center;
+      color: #003973;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+    .services-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .service {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      animation: fadeInUp 1s ease forwards;
+    }
+    .service h3 {
+      color: #003973;
+      margin-bottom: 10px;
+    }
+    .contact {
+      text-align: center;
+    }
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 24px;
+      background: #003973;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .contact a:hover {
+      background: #001f4d;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 14px;
+      background: #dde7f0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popUp {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      .services-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="https://avatars.githubusercontent.com/u/6311947?v=4" alt="logo">
+    <h1>Я создаю лендинг сайты под ключ</h1>
+    <p>Сайт для твоего бизнеса — современный, быстрый и адаптированный под телефон</p>
+    
+  </header>
+
+  <section id="services">
+    <h2>Мои услуги</h2>
+    <div class="services-list">
+      <div class="service">
+        <h3>Лендинг под ключ</h3>
+        <p>Разработка красивого одностраничного сайта с нуля. Только HTML и CSS — быстро, чисто, без багов.</p>
+      </div>
+      <div class="service">
+        <h3>Адаптация под мобильный</h3>
+        <p>Ваш сайт будет выглядеть идеально на любом устройстве: телефоне, планшете или ноутбуке.</p>
+      </div>
+      <div class="service">
+        <h3>Анимации и эффекты</h3>
+        <p>Добавлю современные плавные анимации, чтобы сайт был живым и приятным для глаз.</p>
+      </div>
+      <div class="service">
+        <h3>Контактные формы</h3>
+        <p>Установлю красивые кнопки WhatsApp, телефон, email — чтобы клиент мог связаться сразу.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact visible">
+    <h2>Связаться со мной</h2>
+    <a href=\"tel:+77054179557\">Позвонить: +7 705 417 9557</a>
+    <a href=\"https://wa.me/77054179557\" target=\"_blank\">WhatsApp</a>
+    <a href=\"mailto:ordabekov07uz@mail.ru\">Email</a>
+  </section>
+
+  <footer>
+    © 2025 MirDev. Все права защищены.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
